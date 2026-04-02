@@ -15,22 +15,19 @@ session = ort.InferenceSession(YOLO_MODEL_PATH)
 input_name = session.get_inputs()[0].name
 
 
-def infer_direction(image):
+def infer_direction(image: np.ndarray):
     """
     Pipeline completo:
     - Preprocesamiento
     - Inferencia ONNX
     - Postprocesamiento
-    - Cálculo de dirección
 
     Args:
         image (np.ndarray): Imagen de entrada (BGR)
 
     Returns:
         str | bool | None:
-            - True si está centrado
-            - "izquierda", "derecha", "arriba", "abajo"
-            - None si no hay detección válida
+            - cx, cy, width, height, contour
     """
     height, width = image.shape[:2]
 
@@ -77,8 +74,7 @@ def infer_direction(image):
 
     cx, cy = centroid
 
-    # --- Dirección ---
-    return compute_direction(cx, cy, width, height)
+    return (cx, cy, width, height, contour, compute_direction(cx, cy, width, height))
 
 
 # =========================

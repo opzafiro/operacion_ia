@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from .config import PROTO_SHAPE, MASK_THRESHOLD, DIST_THRESHOLD
+from config import PROTO_SHAPE, MASK_THRESHOLD, DIST_THRESHOLD
 
 # =========================
 # MÁSCARA

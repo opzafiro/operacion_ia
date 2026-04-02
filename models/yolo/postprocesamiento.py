@@ -1,5 +1,5 @@
 import numpy as np
-from .config import CONF_THRESHOLD
+from config import CONF_THRESHOLD
 
 
 
